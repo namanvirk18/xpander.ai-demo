@@ -17,16 +17,13 @@ from crewai import Crew
 def main():
     topic = input("Enter the book topic: ")
 
-    # Initialize the Crew with two agents: Researcher and Writer
     crew = Crew()
     researcher = crew.create_agent(name="Researcher", role="Gather information on the topic")
     writer = crew.create_agent(name="Writer", role="Write book chapters based on research")
 
-    # Define tasks for each agent
     crew.add_task(agent=researcher, objective=f"Gather detailed research material on '{topic}'")
     crew.add_task(agent=writer, objective="Write the first draft of book chapters using the research")
 
-    # Execute the crew tasks and collect results
     results = crew.run()
 
     print("\n=== Book Writing Crew Results ===")
